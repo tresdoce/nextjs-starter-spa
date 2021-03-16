@@ -1,0 +1,112 @@
+{
+  "name": "@tresdoce/next-ghpage",
+  "version": "1.0.0",
+  "publishConfig": {
+    "registry": "http://143.198.236.101:8081/repository/npm-private/"
+  },
+  "scripts": {
+    "compile:less": "lessc ./static/assets/less/app.less ./static/assets/css/app.css --source-map",
+    "compile:less-w": "less-watch-compiler ./static/assets/less/ ./static/assets/css app.less",
+    "minify:css": "csso -i ./static/assets/css/app.css -o ./static/assets/css/app.min.css -s ./static/assets/css/app.css.map",
+    "minify:css-w": "csso --watch -i ./static/assets/css/app.css -o ./static/assets/css/app.min.css -s ./static/assets/css/app.css.map",
+    "build:style": "echo build-style && npm-run-all -l -c -s compile:less minify:css",
+    "build:style-w": "echo build-style-w&& npm-run-all -l -c -p compile:less-w minify:css-w",
+    "dev:local:bff": "cross-env ENV=local-bff npm-run-all -l -c -s build:style start:server:envs",
+    "dev:local-w:bff": "cross-env ENV=local-bff npm-run-all -l -c -p build:style-w start:server:envs",
+    "dev:mock": "cross-env ENV=local-mock npm-run-all -l -c -s build:style start:server",
+    "dev:mock-w": "cross-env ENV=local-mock npm-run-all -l -c -p build:style-w start:server",
+    "devtools": "npx react-devtools",
+    "prebuild": "shx rm -rf .next out",
+    "build": "npm run build:style && next build",
+    "start": "cross-env NODE_ENV=production npm-run-all -l -c -p start:server",
+    "start:server": "nodemon server.js",
+    "start:server:envs": "nodemon -r dotenv/config -w .env server.js",
+    "type-check": "tsc",
+    "test": "node -v",
+    "test:jest": "jest",
+    "export": "next export",
+    "local:serve": "npm run build && npm run export && npx serve -s out",
+    "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx commons components config containers contexts hooks lib pages redux services utils widgets"
+  },
+  "dependencies": {
+    "@reach/router": "^1.2.1",
+    "@types/lodash": "^4.14.168",
+    "axios": "^0.21.0",
+    "chart.js": "^2.9.4",
+    "csso": "^4.2.0",
+    "csso-cli": "^3.0.0",
+    "currency.js": "^2.0.3",
+    "immutable": "^4.0.0-rc.12",
+    "less": "^3.12.2",
+    "less-watch-compiler": "^1.14.6",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.32",
+    "next": "^8.1.0",
+    "nodemon": "^2.0.6",
+    "npm-run-all": "^4.1.5",
+    "numeral": "^2.0.6",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "tiny-emitter": "^2.1.0",
+    "unorm": "^1.5.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@tresdoce-toolkit/eslint-config": "1.0.1",
+    "@tresdoce-toolkit/spa-build-config": "1.0.0",
+    "@testing-library/jest-dom": "^4.2.0",
+    "@testing-library/react": "^9.3.1",
+    "@types/jest": "^24.0.21",
+    "@types/reach__router": "^1.2.6",
+    "babel-jest": "^24.8.0",
+    "cross-env": "^6.0.3",
+    "dotenv": "^8.2.0",
+    "dotenv-cli": "^3.2.0",
+    "eslint": "^6.8.0",
+    "express": "^4.17.1",
+    "husky": "^4.2.1",
+    "idx": "^2.5.6",
+    "jest": "^24.9.0",
+    "lint-staged": "^9.4.2",
+    "prettier": "^2.1.0",
+    "serve": "^11.3.0",
+    "shx": "^0.3.2",
+    "ts-jest": "^24.1.0",
+    "typescript": "^4.1.3"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,json,css,md,ts,tsx}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix --ext .ts,.tsx,.js,.jsx",
+      "git add"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "files": [
+    "build"
+  ],
+  "eslintConfig": {
+    "extends": "@tresdoce-toolkit"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true
+  }
+}
