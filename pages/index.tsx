@@ -1,12 +1,11 @@
 import React from 'react';
-import { Config, Typings } from '@galicia-toolkit/core';
+import { Config, Typings } from '@tresdoce-toolkit/core';
 import { setCookie } from '@utils';
 import setDistributionChannel from '@config/setDistributionChannel';
 import Configuration from '@config';
 import AppRouter from '../commons/AppRouter';
 
 interface IndexProps {
-  user: Typings.User;
   config: Typings.Config;
   generalError?: any;
   session_id?: string;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link as ReachLink, navigate as reachNavigate } from '@reach/router';
-import { Config } from '@galicia-toolkit/core';
+import { Config } from '@tresdoce-toolkit/core';
 import Configuration from '@config';
 
 Config.addConfig(Configuration);

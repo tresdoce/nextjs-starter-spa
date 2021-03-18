@@ -1,10 +1,8 @@
 import axios from 'axios';
 import { HttpMethods } from './types';
-import { getCookie, setCookie, emitValue } from '@utils';
-import { refreshToken as srvRefreshToken } from '@services';
-import { Config } from '@galicia-toolkit/core';
+//import { getCookie, setCookie } from '@utils';
+import { Config } from '@tresdoce-toolkit/core';
 import Configuration from '@config';
-import { navigate } from '@lib/navigate';
 
 Config.addConfig(Configuration);
 const { config } = Config.getAppConfig();
@@ -19,16 +17,6 @@ let headers = {
 
 const filterOptions = ({ method: string, ...rest }) => rest;
 
-export const refreshToken = async () => {
-  try {
-    const { token } = await srvRefreshToken();
-    setCookie(config['jwtCookie'], token);
-    return Promise.resolve();
-  } catch (error) {
-    return Promise.reject('Error al refrescar el token.');
-  }
-};
-
 const fetch = async (url: string, options: any = {}) => {
   try {
     const instance = axios.create({
@@ -38,7 +26,7 @@ const fetch = async (url: string, options: any = {}) => {
       },
     });
 
-    if (options['auth']) {
+    /*if (options['auth']) {
       const accessToken = getCookie(config['jwtCookie']);
 
       if (!accessToken) {
@@ -51,17 +39,16 @@ const fetch = async (url: string, options: any = {}) => {
         options['withCredentials'] = config.api.bff.withCredentials;
         options['headers']['Authorization'] = `Bearer ${accessToken}`;
       }
-    }
+    }*/
 
     // INTERCEPTOR REQUEST
-    instance.interceptors.request.use((conf) => {
+    /*instance.interceptors.request.use((conf) => {
       //console.log('1 Interceptor request conf: ', conf);
-      emitValue('checkExecution', { exec: conf, type: 'request' });
       return conf;
-    });
+    });*/
 
     // INTERCEPTOR RESPONSE
-    instance.interceptors.response.use(
+    /*instance.interceptors.response.use(
       (response) => {
         //console.log('2 Interceptor response: ', response);
         // Error de negocio manejado => lo debe manejar el servicio o la pagina/componente que lo invoco (un action, un reducer, un modal, etc)
@@ -102,20 +89,18 @@ const fetch = async (url: string, options: any = {}) => {
           }
         });
       }
-    );
+    );*/
 
-    instance.interceptors.response.use(
+    /*instance.interceptors.response.use(
       (response) => {
         //console.log('Interceptor response: ', response);
-        emitValue('checkExecution', { exec: response, type: 'response' });
         return response;
       },
       (error) => {
         //console.log('Interceptor response error: ', error);
-        emitValue('checkExecution', { exec: error, type: 'error' });
         return Promise.reject(error);
       }
-    );
+    );*/
 
     const { data } = await instance.request({
       url,

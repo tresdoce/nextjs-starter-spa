@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@reach/router": "^1.2.1",
+    "@tresdoce-toolkit/core": "^1.0.0",
     "@types/lodash": "^4.14.168",
     "axios": "^0.21.0",
     "chart.js": "^2.9.4",
@@ -56,10 +57,10 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
-    "@tresdoce-toolkit/eslint-config": "1.0.1",
-    "@tresdoce-toolkit/spa-build-config": "1.0.0",
     "@testing-library/jest-dom": "^4.2.0",
     "@testing-library/react": "^9.3.1",
+    "@tresdoce-toolkit/eslint-config": "^1.0.0",
+    "@tresdoce-toolkit/spa-build-config": "^1.0.0",
     "@types/jest": "^24.0.21",
     "@types/reach__router": "^1.2.6",
     "babel-jest": "^24.8.0",
