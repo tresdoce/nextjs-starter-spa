@@ -6,7 +6,7 @@ import { WrapperContentProps } from './types';
 const WrapperContent: React.FunctionComponent<WrapperContentProps> = (
   props
 ) => {
-  const { id, children } = props;
+  const { id, children, active } = props;
 
   return (
     <div id={id}>
@@ -14,7 +14,7 @@ const WrapperContent: React.FunctionComponent<WrapperContentProps> = (
       <div className="wrapper">
         {/*MAIN-CONTENT*/}
         <div className="main-content">
-          {!props.active ? children : <p>loading...</p>}
+          {!active ? children : <p>loading...</p>}
         </div>
         {/* /MAIN-CONTENT*/}
       </div>

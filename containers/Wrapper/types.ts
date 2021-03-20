@@ -3,10 +3,7 @@ export interface Loading {
 }
 
 export interface WrapperContentProps {
-  setLoading: Function;
   active: boolean;
-  loading: Loading;
   id: string;
   children: any;
-  errorFromPermissions: boolean;
 }

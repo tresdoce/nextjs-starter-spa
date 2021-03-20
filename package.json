@@ -1,9 +1,15 @@
 {
   "name": "@tresdoce/next-ghpage",
   "version": "1.0.0",
+  "description": "Starter nextjs spa",
   "publishConfig": {
     "registry": "http://143.198.236.101:8081/repository/npm-private/"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TresDoce/nextjs-starter-spa.git"
+  },
+  "license": "MIT",
   "scripts": {
     "compile:less": "lessc ./static/assets/less/app.less ./static/assets/css/app.css --source-map",
     "compile:less-w": "less-watch-compiler ./static/assets/less/ ./static/assets/css app.less",
