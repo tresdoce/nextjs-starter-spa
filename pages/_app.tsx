@@ -1,10 +1,8 @@
 import React, { Fragment } from 'react';
 import App, { Container } from 'next/app';
-import { Typings } from '@tresdoce-toolkit/core';
+import { Config, Typings } from '@tresdoce-toolkit/core';
 import Head from 'next/head';
 import idx from 'idx';
-
-import { Config } from '@tresdoce-toolkit/core';
 import Configuration from '@config';
 
 Config.addConfig(Configuration);
@@ -51,6 +49,7 @@ export default class MyApp extends App<AppProps> {
 
   render() {
     const { Component, pageProps } = this.props;
+    //const cdnBasepath = idx(pageProps.config, (_) => _.cdnBasepath) || '';
     const build_id = idx(pageProps.config, (_) => _.buildId) || 'development';
     const versionFile =
       build_id === 'development' ? Math.floor(Date.now() / 1000) : build_id;

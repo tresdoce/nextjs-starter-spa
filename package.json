@@ -24,6 +24,7 @@
     "devtools": "npx react-devtools",
     "prebuild": "shx rm -rf .next out",
     "build": "npm run build:style && next build",
+    "build:export": "npm-run-all -l -c -s prebuild build export",
     "start": "cross-env NODE_ENV=production npm-run-all -l -c -p start:server",
     "start:server": "nodemon server.js",
     "start:server:envs": "nodemon -r dotenv/config -w .env server.js",

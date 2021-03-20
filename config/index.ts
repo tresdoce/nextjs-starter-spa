@@ -1,21 +1,21 @@
 import { Typings } from '@tresdoce-toolkit/core';
 
 const appBasepath = '';
-const distributionChannel = 'local-mock';
 const apiBasepath = `http://localhost:3000/bff`;
-const cdnBasepath = 'https://cdn.statically.io';
+const cdnBasepath = 'https://static-pre.tresdoce.com.ar';
 const staticUrl = './static';
+const distributionChannel = 'local-mock';
 const timeZone = 'America/Argentina/Buenos_Aires';
 
 const baseDeployConfig: Typings.AppConfig = {
   config: {
     debug: false,
-    cookieDomain: '.tresdoce.com.ar',
+    distributionChannel,
     appBasepath,
     cdnBasepath,
     staticUrl,
+    cookieDomain: '.tresdoce.com.ar',
     timeZone,
-    distributionChannel,
     api: {},
   },
 };
@@ -24,10 +24,10 @@ const localConfig: { [key: string]: Typings.AppConfig } = {
   'local-bff': {
     config: {
       ...baseDeployConfig.config,
-      appBasepath: '',
-      staticUrl: 'http://localhost:3000/static',
       debug: true,
       distributionChannel: 'local-bff',
+      appBasepath: '',
+      staticUrl: 'http://localhost:3000/static',
       api: {
         bff: {
           basepath: 'http://localhost:8080/bff',
@@ -39,10 +39,11 @@ const localConfig: { [key: string]: Typings.AppConfig } = {
   'local-mock': {
     config: {
       ...baseDeployConfig.config,
-      appBasepath: '',
-      staticUrl: 'http://localhost:3000/static',
-      distributionChannel: 'local-mock',
       debug: true,
+      distributionChannel: 'local-mock',
+      appBasepath: '',
+      cdnBasepath: 'https://static-pre.tresdoce.com.ar',
+      staticUrl: 'http://localhost:3000/static',
       api: {
         bff: {
           basepath: apiBasepath,
@@ -55,10 +56,10 @@ const localConfig: { [key: string]: Typings.AppConfig } = {
     ...baseDeployConfig,
     config: {
       ...baseDeployConfig.config,
+      debug: true,
       cdnBasepath: 'https://static-pre.tresdoce.com.ar',
       staticUrl:
         'https://static-pre.tresdoce.com.ar/nextjs-starter-spa/dev/static',
-      debug: true,
       api: {
         bff: {
           basepath: apiBasepath,
@@ -71,9 +72,9 @@ const localConfig: { [key: string]: Typings.AppConfig } = {
     ...baseDeployConfig,
     config: {
       ...baseDeployConfig.config,
+      cdnBasepath: 'https://static-pre.tresdoce.com.ar',
       staticUrl:
         'https://static-pre.tresdoce.com.ar/nextjs-starter-spa/qas/static',
-      cdnBasepath: 'https://static-pre.tresdoce.com.ar',
       api: {
         bff: {
           basepath: apiBasepath,

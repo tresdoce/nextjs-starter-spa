@@ -6,5 +6,5 @@ export interface Post {
 }
 
 export interface OverviewProps {
-  posts: Array<Post>;
+  posts: Post[];
 }
