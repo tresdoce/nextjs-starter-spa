@@ -78,7 +78,7 @@ export default class MyApp extends App<AppProps> {
             type="text/css"
             rel="stylesheet"
           />
-          <title>Office Banking</title>
+          <title>Starter SPA</title>
         </Head>
         <Container>
           <Component {...pageProps} /> {/* index.tsx */}

@@ -9,6 +9,7 @@ module.exports = (phase, { defaultConfig }) => {
 
   spaConfig.webpack = (config, options) => {
     const newConfig = webpackConfig(config, options);
+
     newConfig.resolve = {
       ...config.resolve,
       alias: {

@@ -8,7 +8,7 @@ const containerName = 'overview';
 
 const Overview: React.FunctionComponent<OverviewProps> = () => {
   return (
-    <Wrapper id={containerName} active>
+    <Wrapper id={containerName} active={false}>
       <h1>Hello world</h1>
     </Wrapper>
   );
