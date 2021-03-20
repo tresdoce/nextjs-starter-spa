@@ -15,11 +15,17 @@ const containerName = 'overview';
 const Overview: React.FunctionComponent<OverviewProps> = ({ posts }) => {
   useApiOverview();
 
-  //console.log(posts);
-
   return (
     <Wrapper id={containerName} active={false}>
       <h1>Hello world</h1>
+      {posts &&
+        posts.map((post) => (
+          <div key={post.id}>
+            <h3>{post.title}</h3>
+            <p>{post.body}</p>
+            <br />
+          </div>
+        ))}
     </Wrapper>
   );
 };

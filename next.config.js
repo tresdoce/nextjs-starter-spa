@@ -3,7 +3,6 @@ const spaBuildConfig = require('@tresdoce-toolkit/spa-build-config');
 
 module.exports = (phase, { defaultConfig }) => {
   const spaConfig = spaBuildConfig.nextConfig(phase, { defaultConfig });
-  //const isProd = process.env.NODE_ENV === 'production';
 
   const webpackConfig = spaConfig.webpack;
 
@@ -30,10 +29,6 @@ module.exports = (phase, { defaultConfig }) => {
 
     return newConfig;
   };
-
-  /*spaConfig.assetPrefix = isProd
-    ? 'https://cdn.statically.io/gh/rudemex/test-nextjs-ghpage/gh-pages/'
-    : '';*/
 
   return spaConfig;
 };
