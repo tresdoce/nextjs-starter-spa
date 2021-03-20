@@ -1,0 +1,119 @@
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  html {
+    height: 100%;
+
+  }
+
+  body {
+    margin: 0 0 @footerH-tablet;
+    margin: 0;
+    height: 100%;
+  }
+
+  footer {
+    //margin-top: -@footerH-tablet;
+    margin-top: 0px;
+
+  }
+
+  .navbar {
+    height: @navH-tablet;
+
+    .navbar-header {
+      .navbar-brand {
+        margin: 14px 0px;
+        width: 110px;
+        height: 52px;
+      }
+    }
+
+    .navbar-collapse {
+      .nav {
+        padding: 10px 0;
+
+        li {
+          &.dropdown {
+            .dropdown-toggle {
+              &::after, &:hover::after, &:focus::after {
+                //opacity: 1;
+              }
+
+              &::before {
+                color: @color-gray-dark;
+                text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
+                content: attr(data-hover);
+                position: absolute;
+                -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+                -moz-transition: -moz-transform 0.3s, opacity 0.3s;
+                transition: transform 0.3s, opacity 0.3s;
+                pointer-events: none;
+              }
+
+              &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 3px;
+                background: @color-cyan;
+                opacity: 0;
+                -webkit-transform: translateY(5px);
+                -moz-transform: translateY(5px);
+                transform: translateY(5px);
+                -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+                -moz-transition: -moz-transform 0.3s, opacity 0.3s;
+                transition: transform 0.3s, opacity 0.3s;
+                pointer-events: none;
+              }
+
+              &:hover::before, &:focus::before {
+                opacity: 0;
+                -webkit-transform: translateY(-2px);
+                -moz-transform: translateY(-2px);
+                transform: translateY(-2px);
+              }
+
+              &:hover::after, &:focus::after {
+                opacity: 1;
+                -webkit-transform: translateY(0px);
+                -moz-transform: translateY(0px);
+                transform: translateY(0px);
+              }
+            }
+
+            .dropdown-menu {
+              margin-left: -18px;
+              margin-right: -18px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .custom {
+    .wrapper {
+      .main-content {
+        padding-top: @navH-tablet;
+        padding-bottom: @footerH-tablet;
+      }
+    }
+  }
+
+  // HOME // --------------------------------------
+  #home {
+    .wrapper {
+      .main-content {
+        header {
+        }
+
+        .container {
+        }
+      }
+    }
+  }
+
+  // ----------------------------------------------
+}

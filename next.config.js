@@ -23,7 +23,7 @@ module.exports = (phase, { defaultConfig }) => {
         '@utils': path.resolve(__dirname, 'utils/'),
         '@actions': path.resolve(__dirname, 'redux/actions/'),
         '@reducers': path.resolve(__dirname, 'redux/reducers/'),
-        '@types': path.resolve(__dirname, 'redux/types/'),
+        '@reduxTypes': path.resolve(__dirname, 'redux/types/'),
         '@hooks': path.resolve(__dirname, 'hooks/'),
       },
     };

@@ -3,7 +3,7 @@ import reduxThunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from '../reducers';
-import { Config } from '@galicia-toolkit/core';
+import { Config } from '@tresdoce-toolkit/core';
 import Configuration from '@config';
 
 Config.addConfig(Configuration);

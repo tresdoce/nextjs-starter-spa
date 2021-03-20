@@ -1,0 +1,228 @@
+// Vars // --------------------------------------
+@color-white: #fff;
+@color-black: #000;
+@color-blue: #0033a0;
+@color-cyan: #00aec7;
+@color-gray-light: #e1dddd;
+@color-gray-dark: #3e4040;
+
+@bgColor: @color-white;
+@defaultTextColor: @color-blue;
+@color-link: @color-blue;
+@color-link-over: @color-cyan;
+@color-input-focus: @color-cyan;
+@images: '../images';
+@baseFont: "Helvetica Neue", Helvetica, Arial, sans-serif;
+@sansFont: "Helvetica Neue", Helvetica, Arial, sans-serif;
+@defaultSizeFont: 1.4;
+@defaultLineHeight: 1.4;
+@defaultLetterSpacing: normal;
+@defaultWeight: normal;
+@defaultStretch: normal;
+@defaultFontStyle: normal;
+@defaultShadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.2);
+@defaultGutter: 14px !important; //Paddings laterales de las col
+@defaultRadius: 8px;
+@navH-mobile: 60px;
+@navH-tablet: 80px;
+@navH-desktop: 102px;
+@navH-desktop-xl: 102px;
+@footerH-mobile: 829px;
+@footerH-tablet: 422px;
+@footerH-desktop: 403px;
+@footerH-desktop-xl: 400px;
+
+
+// MIXINS // --------------------------------------
+//.font-size(@size:@defaultSizeFont, @lineHeight:@defaultLineHeight, @letterSpacing:@defaultLetterSpacing, @weight:@defaultWeight, @stretch:@defaultStretch, @fontStyle:@defaultFontStyle ) {
+.font-size(@size:@defaultSizeFont) {
+  @remValue: @size;
+  @pxValue: (@size * 10);
+  font-size: ~'@{remValue}rem';
+  font-size: ~'@{pxValue}px';
+
+  /*font-weight: @weight;
+    font-stretch: @stretch;
+    font-style: @fontStyle;
+    line-height: @lineHeight;
+    letter-spacing: @letterSpacing;*/
+}
+
+//.font-size-important(@size:@defaultSizeFont, @lineHeight:@defaultLineHeight, @letterSpacing:@defaultLetterSpacing, @weight:@defaultWeight, @stretch:@defaultStretch, @fontStyle:@defaultFontStyle ) {
+.font-size-important(@size:@defaultSizeFont) {
+  @remValue: @size;
+  @pxValue: (@size * 10);
+  font-size: ~'@{remValue}rem !important';
+  font-size: ~'@{pxValue}px !important';
+  /*font-weight: @weight;
+    font-stretch: @stretch;
+    font-style: @fontStyle;
+    line-height: @lineHeight;
+    letter-spacing: @letterSpacing;*/
+}
+
+.RoundedShape(@radius:@defaultRadius) {
+  -webkit-border-radius: @radius !important;
+  -moz-border-radius: @radius !important;
+  border-radius: @radius !important;
+}
+
+.RoundedShapeCorners(@topLeft:@defaultRadius, @topRight:@defaultRadius, @bottomLeft:@defaultRadius, @bottomRight:@defaultRadius) {
+  -webkit-border-radius: @topLeft @topRight @bottomLeft @bottomRight !important;
+  -moz-border-radius: @topLeft @topRight @bottomLeft @bottomRight !important;
+  border-radius: @topLeft @topRight @bottomLeft @bottomRight !important;
+}
+
+.BoxShadow (@shadow:@defaultShadow) {
+  -webkit-box-shadow: @shadow;
+  -moz-box-shadow: @shadow;
+  box-shadow: @shadow;
+}
+
+.TextShadow (@params) {
+  text-shadow: @params;
+}
+
+.opacity(@value) {
+  @opValue: (@value * 100);
+  -ms-filter: ~'progid:DXImageTransform.Microsoft.Alpha(Opacity=@{opValue})';
+  filter: alpha(opacity= @opValue);
+  -moz-opacity: @value;
+  -khtml-opacity: @value;
+  opacity: @value;
+}
+
+.filter-blur(@params) {
+  -webkit-filter: blur(@params);
+  -moz-filter: blur(@params);
+  -o-filter: blur(@params);
+  -ms-filter: blur(@params);
+  filter: blur(@params);
+}
+
+.TextStroke(@width, @color) {
+  -webkit-text-fill-color: @color;
+  -webkit-text-stroke-width: @width;
+  -webkit-text-stroke-color: @color;
+  z-index: -1;
+}
+
+.gradient (@direction, @defaultColor, @color1, @color2) {
+  background-color: @defaultColor;
+  background: -webkit-linear-gradient(@direction,
+  @color1,
+  @color2); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(@direction,
+  @color1,
+  @color2); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(@direction,
+  @color1,
+  @color2); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(@direction,
+  @color1,
+  @color2); /* Standard syntax */
+
+  /*background-repeat: repeat;
+    -webkit-background-size: 100% 200%;
+    -moz-background-size: 100% 200%;
+    background-size: 100% 200%;*/
+}
+
+.displayFlex() {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -o-flex;
+  display: flex;
+}
+
+.TransformImportant (@params) {
+  transform: @params !important;
+  -ms-transform: @params !important;
+  -webkit-transform: @params !important;
+  -moz-transform: @params !important;
+  -o-transform: @params !important;
+}
+
+.Transform (@params) {
+  transform: @params;
+  -ms-transform: @params;
+  -webkit-transform: @params;
+  -moz-transform: @params;
+  -o-transform: @params;
+}
+
+.Transitions (@params) {
+  -webkit-transition: @params;
+  -moz-transition: @params;
+  -o-transition: @params;
+  transition: @params;
+}
+
+.TransitionsDelays(@params) {
+  -webkit-transition-delay: @params;
+  transition-delay: @params;
+}
+
+.imageMask(@params) {
+  -webkit-mask-image: url(@params);
+  -o-mask-image: url(@params);
+  -moz-mask-image: url(@params);
+  -ms-mask-image: url(@params);
+  mask-image: url(@params);
+}
+
+.imageMaskPosition(@params) {
+  -webkit-mask-position: @params;
+  -o-mask-position: @params;
+  -moz-mask-position: @params;
+  -ms-mask-position: @params;
+  mask-position: @params;
+}
+
+.VHCenterImportant(@position,@top1,@left1,@top2,@left2) {
+  position: @position !important;
+  top: @top1 !important;
+  left: @left1 !important;
+  .TransformImportant (translate(@left2, @top2));;
+}
+
+.VHCenter(@position,@top1,@left1,@top2,@left2) {
+  position: @position;
+  top: @top1;
+  left: @left1;
+  .TransformImportant (translate(@left2, @top2));;
+}
+
+.Animation(@params) {
+  -webkit-animation: @params;
+  -moz-animation: @params;
+  animation: @params;
+}
+
+.userSelect(@params) {
+  -webkit-touch-callout: @params;
+  -webkit-user-select: @params;
+  -khtml-user-select: @params;
+  -moz-user-select: @params;
+  -ms-user-select: @params;
+  user-select: @params;
+}
+
+.Placeholder(@rules) {
+  &::-webkit-input-placeholder {
+    @rules();
+  }
+
+  &:-moz-placeholder {
+    @rules();
+  }
+
+  &::-moz-placeholder {
+    @rules();
+  }
+
+  &:-ms-input-placeholder {
+    @rules();
+  }
+}

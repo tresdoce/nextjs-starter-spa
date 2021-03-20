@@ -1,0 +1,55 @@
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  footer {
+    margin-top: -@footerH-desktop;
+  }
+
+  .navbar {
+    height: @navH-tablet;
+
+    .navbar-header {
+      .navbar-brand {
+        margin: 14px 0px;
+        width: 110px;
+        height: 52px;
+      }
+    }
+
+    .navbar-collapse {
+      .nav {
+        li {
+          &.dropdown {
+            .dropdown-menu {
+
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .custom {
+    .wrapper {
+      .main-content {
+        padding-top: @navH-tablet;
+        padding-bottom: @footerH-tablet;
+      }
+    }
+  }
+
+  // HOME // --------------------------------------
+  #home {
+    .wrapper {
+      .main-content {
+        header {
+        }
+
+        .container {
+        }
+      }
+    }
+  }
+
+  // ----------------------------------------------
+
+}
