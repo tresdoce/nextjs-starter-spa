@@ -55,14 +55,13 @@ const localConfig: { [key: string]: Typings.AppConfig } = {
     ...baseDeployConfig,
     config: {
       ...baseDeployConfig.config,
-      cdnBasepath: 'https://static-pre.bancogalicia.com.ar',
+      cdnBasepath: 'https://static-pre.tresdoce.com.ar',
       staticUrl:
-        'https://static-pre.bancogalicia.com.ar/spa-experiencia/dev/static',
+        'https://static-pre.tresdoce.com.ar/nextjs-starter-spa/dev/static',
       debug: true,
       api: {
         bff: {
-          basepath:
-            'https://bff-experiencia-ofbr-infolending-dev.devcloud.bancogalicia.com.ar/bff',
+          basepath: apiBasepath,
           withCredentials: false,
         },
       },
@@ -73,12 +72,11 @@ const localConfig: { [key: string]: Typings.AppConfig } = {
     config: {
       ...baseDeployConfig.config,
       staticUrl:
-        'https://static-pre.bancogalicia.com.ar/spa-experiencia/qas/static',
-      cdnBasepath: 'https://static-pre.bancogalicia.com.ar',
+        'https://static-pre.tresdoce.com.ar/nextjs-starter-spa/qas/static',
+      cdnBasepath: 'https://static-pre.tresdoce.com.ar',
       api: {
         bff: {
-          basepath:
-            'https://bff-experiencia-ofbr-infolending-qas.stgcloud.bancogalicia.com.ar/bff',
+          basepath: apiBasepath,
           withCredentials: false,
         },
       },
@@ -88,13 +86,12 @@ const localConfig: { [key: string]: Typings.AppConfig } = {
     ...baseDeployConfig,
     config: {
       ...baseDeployConfig.config,
-      cdnBasepath: 'https://static-pre.bancogalicia.com.ar',
+      cdnBasepath: 'https://static-pre.tresdoce.com.ar',
       staticUrl:
-        'https://static-pre.bancogalicia.com.ar/spa-experiencia/stg/static',
+        'https://static-pre.tresdoce.com.ar/nextjs-starter-spa/stg/static',
       api: {
         bff: {
-          basepath:
-            'https://bff-experiencia-ofbr-infolending-int.stgcloud.bancogalicia.com.ar/bff',
+          basepath: apiBasepath,
           withCredentials: false,
         },
       },
@@ -105,12 +102,12 @@ const localConfig: { [key: string]: Typings.AppConfig } = {
     ...baseDeployConfig,
     config: {
       ...baseDeployConfig.config,
-      cdnBasepath: 'https://static.bancogalicia.com.ar',
+      cdnBasepath: 'https://static.tresdoce.com.ar',
       staticUrl:
-        'https://static.bancogalicia.com.ar/spa-experiencia/latest/static',
+        'https://static.tresdoce.com.ar/nextjs-starter-spa/latest/static',
       api: {
         bff: {
-          basepath: 'https://ofbr.bff.bancogalicia.com.ar/bff',
+          basepath: apiBasepath,
           withCredentials: false,
         },
       },

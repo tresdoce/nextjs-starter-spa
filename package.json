@@ -32,7 +32,7 @@
     "test:jest": "jest",
     "export": "next export",
     "local:serve": "npm run build && npm run export && npx serve -s out",
-    "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx commons components config containers contexts hooks lib pages redux services utils widgets"
+    "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx commons components config containers contexts hooks lib pages redux services utils"
   },
   "dependencies": {
     "@reach/router": "^1.2.1",
