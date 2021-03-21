@@ -8,6 +8,7 @@ import Configuration from '@config';
 
 Config.addConfig(Configuration);
 const { config } = Config.getAppConfig();
+
 const debug = config.debug;
 
 const createMiddlewares = (debug) => {

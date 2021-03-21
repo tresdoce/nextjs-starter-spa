@@ -30,7 +30,7 @@ const localConfig: { [key: string]: Typings.AppConfig } = {
       staticUrl: 'http://localhost:3000/static',
       api: {
         bff: {
-          basepath: 'http://localhost:8080/bff',
+          basepath: 'http://localhost:8080/api',
           withCredentials: false,
         },
       },
@@ -108,7 +108,7 @@ const localConfig: { [key: string]: Typings.AppConfig } = {
         'https://static.tresdoce.com.ar/nextjs-starter-spa/latest/static',
       api: {
         bff: {
-          basepath: apiBasepath,
+          basepath: 'http://localhost:8080/api',
           withCredentials: false,
         },
       },

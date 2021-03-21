@@ -5,14 +5,14 @@ const express = require('express');
 const getQuery = (url) => Url.parse(url, true).query;
 
 const port = parseInt(process.env.PORT, 10) || 3000;
-const dev = process.env.NODE_ENV !== 'production';
-const mock = process.env.ENV === 'local-mock';
+const dev = process.env.ENV !== 'production';
+//const mock = process.env.ENV === 'local-mock';
 const app = next({ dev });
 
 const server = express();
 
 app.prepare().then(() => {
-  if (mock) {
+  if (dev) {
     // Load mock-server dev-only
     const mockApiRouter = require('./server-mock');
 

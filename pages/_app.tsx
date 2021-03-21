@@ -1,12 +1,8 @@
 import React, { Fragment } from 'react';
 import App, { Container } from 'next/app';
-import { Config, Typings } from '@tresdoce-toolkit/core';
+import { Typings } from '@tresdoce-toolkit/core';
 import Head from 'next/head';
 import idx from 'idx';
-import Configuration from '@config';
-
-Config.addConfig(Configuration);
-const { config } = Config.getAppConfig();
 
 interface AppProps {
   pageProps: Typings.AppConfig;
@@ -53,7 +49,7 @@ export default class MyApp extends App<AppProps> {
     const build_id = idx(pageProps.config, (_) => _.buildId) || 'development';
     const versionFile =
       build_id === 'development' ? Math.floor(Date.now() / 1000) : build_id;
-    const staticUrl = idx(config, (_) => _.staticUrl) || './static';
+    const staticUrl = idx(pageProps.config, (_) => _.staticUrl) || './static';
 
     // Next renders error pages on export so we should catch this options
     if (pageProps.statusCode) {
