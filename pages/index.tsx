@@ -6,14 +6,14 @@ import setDistributionChannel from '@config/setDistributionChannel';
 
 import AppRouter from '../commons/AppRouter';
 
-// It's important to add the configuration object before any Config.getAppConfig call
-Config.addConfig(Configuration);
-
 interface IndexProps {
   config: Typings.Config;
   generalError?: any;
   session_id?: string;
 }
+
+// It's important to add the configuration object before any Config.getAppConfig call
+Config.addConfig(Configuration as any);
 
 class Index extends React.Component<IndexProps> {
   static displayName = 'Index';
