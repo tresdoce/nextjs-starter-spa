@@ -1,6 +1,8 @@
 const Url = require('url');
 const next = require('next');
 const express = require('express');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
 const getQuery = (url) => Url.parse(url, true).query;
 
@@ -12,6 +14,9 @@ const app = next({ dev });
 const server = express();
 
 app.prepare().then(() => {
+  server.use(bodyParser.urlencoded({ extended: false }));
+  server.use(cookieParser());
+
   if (dev) {
     // Load mock-server dev-only
     const mockApiRouter = require('./server-mock');

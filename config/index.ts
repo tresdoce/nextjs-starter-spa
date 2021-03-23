@@ -60,6 +60,7 @@ const localConfig: { [key: string]: Typings.AppConfig } = {
       cdnBasepath: 'https://static-pre.tresdoce.com.ar',
       staticUrl:
         'https://static-pre.tresdoce.com.ar/nextjs-starter-spa/dev/static',
+      distributionChannel: 'dev',
       api: {
         bff: {
           basepath: apiBasepath,
@@ -75,6 +76,7 @@ const localConfig: { [key: string]: Typings.AppConfig } = {
       cdnBasepath: 'https://static-pre.tresdoce.com.ar',
       staticUrl:
         'https://static-pre.tresdoce.com.ar/nextjs-starter-spa/qas/static',
+      distributionChannel: 'qas',
       api: {
         bff: {
           basepath: apiBasepath,
@@ -90,6 +92,7 @@ const localConfig: { [key: string]: Typings.AppConfig } = {
       cdnBasepath: 'https://static-pre.tresdoce.com.ar',
       staticUrl:
         'https://static-pre.tresdoce.com.ar/nextjs-starter-spa/stg/static',
+      distributionChannel: 'stg',
       api: {
         bff: {
           basepath: apiBasepath,
@@ -106,6 +109,23 @@ const localConfig: { [key: string]: Typings.AppConfig } = {
       cdnBasepath: 'https://static.tresdoce.com.ar',
       staticUrl:
         'https://static.tresdoce.com.ar/nextjs-starter-spa/latest/static',
+      distributionChannel: 'latest',
+      api: {
+        bff: {
+          basepath: 'http://localhost:8080/api',
+          withCredentials: false,
+        },
+      },
+    },
+  }, // Latest
+  production: {
+    ...baseDeployConfig,
+    config: {
+      ...baseDeployConfig.config,
+      cdnBasepath: 'https://static.tresdoce.com.ar',
+      staticUrl:
+        'https://static.tresdoce.com.ar/nextjs-starter-spa/latest/static',
+      distributionChannel: 'production',
       api: {
         bff: {
           basepath: 'http://localhost:8080/api',
