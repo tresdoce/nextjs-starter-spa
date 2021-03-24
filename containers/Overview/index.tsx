@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 // Components
 import { Wrapper } from '@containers';
+import { ItemListPost } from '@components';
 
 // Hooks
 import { useApiOverview } from '@hooks/containers/services/useApiOverview';
@@ -13,23 +14,19 @@ import { Post } from '@services/types';
 
 const containerName = 'overview';
 
+const renderItemsList = (posts) => {
+  return posts.map((item) => <li>{item.id}</li>);
+};
+
 const Overview: React.FunctionComponent<OverviewProps> = ({ posts }) => {
   useApiOverview();
-
-  const renderPost = (post) => {
-    return (
-      <div key={post.id}>
-        <h3>{post.title}</h3>
-        <p>{post.body}</p>
-        <br />
-      </div>
-    );
-  };
 
   return (
     <Wrapper id={containerName} active={false}>
       <h1>Hello world</h1>
-      {posts && posts.map((post: Post) => renderPost(post))}
+      {posts && posts.map((post: Post) => <ItemListPost post={post} />)}
+      <hr />
+      {posts && <ul>{renderItemsList(posts)}</ul>}
     </Wrapper>
   );
 };
