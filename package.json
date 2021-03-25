@@ -118,6 +118,9 @@
   },
   "prettier": {
     "trailingComma": "es5",
-    "singleQuote": true
+    "singleQuote": true,
+    "semi": true,
+    "tabWidth": 2,
+    "printWidth": 100
   }
 }
