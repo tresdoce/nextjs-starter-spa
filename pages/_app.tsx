@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import App, { Container } from 'next/app';
 import { Typings } from '@tresdoce-toolkit/core';
+import { createTheme } from '@tresdoce-ui/brand';
+import { Layout } from '@tresdoce-ui/core';
 import Head from 'next/head';
 import idx from 'idx';
 
@@ -45,10 +47,9 @@ export default class MyApp extends App<AppProps> {
 
   render() {
     const { Component, pageProps } = this.props;
-    //const cdnBasepath = idx(pageProps.config, (_) => _.cdnBasepath) || '';
+    const cdnBasepath = idx(pageProps.config, (_) => _.cdnBasepath) || '';
     const build_id = idx(pageProps.config, (_) => _.buildId) || 'development';
-    const versionFile =
-      build_id === 'development' ? Math.floor(Date.now() / 1000) : build_id;
+    const versionFile = build_id === 'development' ? Math.floor(Date.now() / 1000) : build_id;
     const staticUrl = idx(pageProps.config, (_) => _.staticUrl) || './static';
 
     // Next renders error pages on export so we should catch this options
@@ -76,7 +77,9 @@ export default class MyApp extends App<AppProps> {
           <title>Starter SPA</title>
         </Head>
         <Container>
-          <Component {...pageProps} /> {/* index.tsx */}
+          <Layout theme={createTheme({})} cdnBasepath={`${cdnBasepath}/assets`}>
+            <Component {...pageProps} /> {/* index.tsx */}
+          </Layout>
         </Container>
       </Fragment>
     );

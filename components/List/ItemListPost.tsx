@@ -5,7 +5,9 @@ import { ItemListPostsProps } from './types';
 const ItemListPost: React.FC<ItemListPostsProps> = ({ post }) => {
   return (
     <div key={post.id}>
-      <h3>{post.title}</h3>
+      <h3>
+        {post.title} - User: {post.userId}
+      </h3>
       <p>{post.body}</p>
       <br />
     </div>

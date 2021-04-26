@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 // Components
 import { Wrapper } from '@containers';
 import { ItemListPost } from '@components';
+import { Button } from '@tresdoce-ui/core';
 
 // Hooks
 import { useApiOverview } from '@hooks/containers/services/useApiOverview';
@@ -14,19 +15,15 @@ import { Post } from '@services/types';
 
 const containerName = 'overview';
 
-const renderItemsList = (posts) => {
-  return posts.map((item) => <li>{item.id}</li>);
-};
-
-const Overview: React.FunctionComponent<OverviewProps> = ({ posts }) => {
+const Overview: React.FC<OverviewProps> = ({ posts }) => {
   useApiOverview();
 
   return (
     <Wrapper id={containerName} active={false}>
       <h1>Hello world</h1>
-      {posts && posts.map((post: Post) => <ItemListPost post={post} />)}
-      <hr />
-      {posts && <ul>{renderItemsList(posts)}</ul>}
+      <Button foo={'test button'} onClick={() => console.warn('click')} />
+
+      {posts && posts.map((post: Post, index: number) => <ItemListPost key={index} post={post} />)}
     </Wrapper>
   );
 };
