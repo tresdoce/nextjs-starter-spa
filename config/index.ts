@@ -11,6 +11,7 @@ const baseDeployConfig: Typings.AppConfig = {
   config: {
     debug: false,
     distributionChannel,
+    channelId: '',
     appBasepath,
     cdnBasepath,
     staticUrl,
@@ -58,8 +59,7 @@ const localConfig: { [key: string]: Typings.AppConfig } = {
       ...baseDeployConfig.config,
       debug: true,
       cdnBasepath: 'https://static-pre.tresdoce.com.ar',
-      staticUrl:
-        'https://static-pre.tresdoce.com.ar/nextjs-starter-spa/dev/static',
+      staticUrl: 'https://static-pre.tresdoce.com.ar/nextjs-starter-spa/dev/static',
       distributionChannel: 'dev',
       api: {
         bff: {
@@ -74,8 +74,7 @@ const localConfig: { [key: string]: Typings.AppConfig } = {
     config: {
       ...baseDeployConfig.config,
       cdnBasepath: 'https://static-pre.tresdoce.com.ar',
-      staticUrl:
-        'https://static-pre.tresdoce.com.ar/nextjs-starter-spa/qas/static',
+      staticUrl: 'https://static-pre.tresdoce.com.ar/nextjs-starter-spa/qas/static',
       distributionChannel: 'qas',
       api: {
         bff: {
@@ -90,8 +89,7 @@ const localConfig: { [key: string]: Typings.AppConfig } = {
     config: {
       ...baseDeployConfig.config,
       cdnBasepath: 'https://static-pre.tresdoce.com.ar',
-      staticUrl:
-        'https://static-pre.tresdoce.com.ar/nextjs-starter-spa/stg/static',
+      staticUrl: 'https://static-pre.tresdoce.com.ar/nextjs-starter-spa/stg/static',
       distributionChannel: 'stg',
       api: {
         bff: {
@@ -107,8 +105,7 @@ const localConfig: { [key: string]: Typings.AppConfig } = {
     config: {
       ...baseDeployConfig.config,
       cdnBasepath: 'https://static.tresdoce.com.ar',
-      staticUrl:
-        'https://static.tresdoce.com.ar/nextjs-starter-spa/latest/static',
+      staticUrl: 'https://static.tresdoce.com.ar/nextjs-starter-spa/latest/static',
       distributionChannel: 'latest',
       api: {
         bff: {
@@ -123,8 +120,7 @@ const localConfig: { [key: string]: Typings.AppConfig } = {
     config: {
       ...baseDeployConfig.config,
       cdnBasepath: 'https://static.tresdoce.com.ar',
-      staticUrl:
-        'https://static.tresdoce.com.ar/nextjs-starter-spa/latest/static',
+      staticUrl: 'https://static.tresdoce.com.ar/nextjs-starter-spa/latest/static',
       distributionChannel: 'production',
       api: {
         bff: {
