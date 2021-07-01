@@ -1,15 +1,19 @@
 import React, { Fragment } from 'react';
 import App, { Container } from 'next/app';
-import { Typings } from '@tresdoce-toolkit/core';
+import { Config, Typings } from '@tresdoce-toolkit/core';
 import { createTheme } from '@tresdoce-ui/brand';
 import { Layout } from '@tresdoce-ui/core';
 import Head from 'next/head';
 import idx from 'idx';
+import Configuration from '../config';
 
 interface AppProps {
   pageProps: Typings.AppConfig;
   cdnBasepath: string;
+  ctx: any;
 }
+
+Config.addConfig(Configuration);
 
 export default class MyApp extends App<AppProps> {
   static displayName = 'MyApp';
@@ -24,6 +28,7 @@ export default class MyApp extends App<AppProps> {
     return {
       pageProps: {
         ...pageProps,
+        ctx,
         isServer: 'req' in ctx,
       },
     };
@@ -36,8 +41,13 @@ export default class MyApp extends App<AppProps> {
     errorInfo: null,
   };
 
-  componentDidMount() {
-    this.setState({ isServer: false });
+  async componentDidMount() {
+    Config.loadScript('/config/env-config.js').then(() =>
+      this.setState({
+        ...Config.getAppConfig(),
+        isServer: false,
+      })
+    );
   }
 
   componentDidCatch(error, errorInfo) {

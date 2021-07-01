@@ -24,6 +24,7 @@
     "devtools": "npx react-devtools",
     "prebuild": "shx rm -rf .next out",
     "build": "npm run build:style && next build",
+    "build:standalone": "next build && npm run export:standalone",
     "build:export": "npm-run-all -l -c -s prebuild build export",
     "start": "cross-env ENV=production npm-run-all -l -c -p start:server:next",
     "start:server": "nodemon server.js",
@@ -33,6 +34,7 @@
     "test": "node -v",
     "test:jest": "jest",
     "export": "next export",
+    "export:standalone": "next export -o build",
     "local:serve": "npm run build && npm run export && npx serve -s out",
     "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx commons components config containers contexts hooks lib pages redux services utils"
   },
