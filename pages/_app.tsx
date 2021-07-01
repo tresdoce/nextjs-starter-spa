@@ -10,7 +10,6 @@ import Configuration from '../config';
 interface AppProps {
   pageProps: Typings.AppConfig;
   cdnBasepath: string;
-  ctx: any;
 }
 
 Config.addConfig(Configuration);
@@ -28,7 +27,6 @@ export default class MyApp extends App<AppProps> {
     return {
       pageProps: {
         ...pageProps,
-        ctx,
         isServer: 'req' in ctx,
       },
     };
@@ -41,14 +39,20 @@ export default class MyApp extends App<AppProps> {
     errorInfo: null,
   };
 
-  async componentDidMount() {
-    Config.loadScript('/config/env-config.js').then(() =>
+  componentDidMount() {
+    this.setState({
+      isServer: false,
+    });
+  }
+
+  /*async componentDidMount() {
+    Config.loadScript('../config/env-config.js').then(() =>
       this.setState({
         ...Config.getAppConfig(),
         isServer: false,
       })
     );
-  }
+  }*/
 
   componentDidCatch(error, errorInfo) {
     this.setState({ hasError: true, error, errorInfo });
@@ -57,6 +61,7 @@ export default class MyApp extends App<AppProps> {
 
   render() {
     const { Component, pageProps } = this.props;
+    const theme = createTheme();
     const cdnBasepath = idx(pageProps.config, (_) => _.cdnBasepath) || '';
     const build_id = idx(pageProps.config, (_) => _.buildId) || 'development';
     const versionFile = build_id === 'development' ? Math.floor(Date.now() / 1000) : build_id;
@@ -87,7 +92,7 @@ export default class MyApp extends App<AppProps> {
           <title>Starter SPA</title>
         </Head>
         <Container>
-          <Layout theme={createTheme({})} cdnBasepath={`${cdnBasepath}/assets`}>
+          <Layout theme={theme} cdnBasepath={`${cdnBasepath}/assets`}>
             <Component {...pageProps} /> {/* index.tsx */}
           </Layout>
         </Container>

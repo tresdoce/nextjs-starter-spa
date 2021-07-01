@@ -22,9 +22,9 @@
     "dev:mock": "cross-env ENV=local-mock npm-run-all -l -c -s build:style start:server",
     "dev:mock-w": "cross-env ENV=local-mock npm-run-all -l -c -p build:style-w start:server",
     "devtools": "npx react-devtools",
-    "prebuild": "shx rm -rf .next out",
+    "prebuild": "shx rm -rf .next build out",
     "build": "npm run build:style && next build",
-    "build:standalone": "next build && npm run export:standalone",
+    "build:standalone": "npm-run-all -l -c -s prebuild build export:standalone",
     "build:export": "npm-run-all -l -c -s prebuild build export",
     "start": "cross-env ENV=production npm-run-all -l -c -p start:server:next",
     "start:server": "nodemon server.js",
@@ -35,7 +35,8 @@
     "test:jest": "jest",
     "export": "next export",
     "export:standalone": "next export -o build",
-    "local:serve": "npm run build && npm run export && npx serve -s out",
+    "local:serve": "npm run build && npm run export && npx serve -l 3000 -s out",
+    "serve:standalone": "npx serve -l 3000 -s build",
     "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx commons components config containers contexts hooks lib pages redux services utils"
   },
   "dependencies": {

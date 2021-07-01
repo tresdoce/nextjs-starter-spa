@@ -23,7 +23,9 @@ const Overview: React.FC<OverviewProps> = ({ posts }) => {
       <h1>Hello world</h1>
       <Button foo={'test button'} onClick={() => console.warn('click')} />
 
-      {posts && posts.map((post: Post, index: number) => <ItemListPost key={index} post={post} />)}
+      {posts &&
+        posts.length &&
+        posts.map((post: Post, index: number) => <ItemListPost key={index} post={post} />)}
     </Wrapper>
   );
 };

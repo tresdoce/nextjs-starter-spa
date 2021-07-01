@@ -13,7 +13,7 @@ interface IndexProps {
 }
 
 // It's important to add the configuration object before any Config.getAppConfig call
-Config.addConfig(Configuration as any);
+Config.addConfig(Configuration);
 
 class Index extends React.Component<IndexProps> {
   static displayName = 'Index';
