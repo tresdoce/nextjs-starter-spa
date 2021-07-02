@@ -46,7 +46,7 @@ export default class MyApp extends App<AppProps> {
   }
 
   /*async componentDidMount() {
-    Config.loadScript('../config/env-config.js').then(() =>
+    Config.loadScript('/conf/env-config.js').then(() =>
       this.setState({
         ...Config.getAppConfig(),
         isServer: false,
